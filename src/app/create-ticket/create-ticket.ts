@@ -22,7 +22,13 @@ export class CreateTicket {
     prioridade: 'Média' as 'Alta' | 'Média' | 'Baixa',
     categoria: 'Outros' as 'Hardware' | 'Software' | 'Acesso' | 'Rede' | 'Outros',
     criadoPor: 'Administrador',
-    status: 'Aberto' as 'Aberto' | 'Em Andamento' | 'Aguardando' | 'Resolvido'
+    status: 'Aberto' as 'Aberto' | 'Em Andamento' | 'Aguardando' | 'Resolvido',
+    emailSolicitante: '',
+    telefoneSolicitante: '',
+    atribuidoA: '',
+    localizacao: '',
+    equipamento: '',
+    sla: ''
   };
 
   criarTicket() {

@@ -46,28 +46,28 @@
     <!-- Conteúdo Principal -->
     <div class="col d-flex flex-column content-wrapper" style="margin-left: 80px;">
       <!-- Header -->
-      <div class="bg-white border-bottom px-2 px-md-4 py-2 py-md-3 position-sticky top-0" style="z-index: 999;">
+      <div class="bg-white border-bottom px-3 px-md-4 py-2 py-md-3 position-sticky top-0 shadow-sm" style="z-index: 999;">
         <div class="d-flex justify-content-between align-items-center">
-          <div class="d-flex align-items-center gap-2">
+          <div class="d-flex align-items-center gap-3">
             <button class="btn btn-link d-md-none hamburger-btn" (click)="toggleSidebar()" type="button" style="color: #1e3a5f; padding: 0.5rem; min-width: 44px; min-height: 44px;">
               <i class="bi bi-list" style="font-size: 1.75rem;"></i>
             </button>
             <div class="header-title">
-              <h4 class="mb-0 fw-semibold">Tasky</h4>
-              <small class="text-muted d-none d-sm-inline">Sistema de Gestão Unificada</small>
+              <h4 class="mb-0 fw-semibold" style="color: #1e3a5f;">Tasky</h4>
+              <small class="text-muted d-none d-sm-inline" style="font-size: 0.75rem;">Sistema de Gestão Unificada</small>
             </div>
           </div>
           <div class="d-flex align-items-center gap-2 gap-md-3">
+            <ng-content select="[header-actions]"></ng-content>
             <div class="d-flex align-items-center gap-2 header-user-info d-none d-md-flex">
-              <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white" style="width: 40px; height: 40px;">
-                <i class="bi bi-person"></i>
+              <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white shadow-sm" style="width: 42px; height: 42px;">
+                <i class="bi bi-person-fill"></i>
               </div>
-              <div>
-                <div class="fw-medium small">Administrador</div>
-                <div class="text-muted small d-none d-lg-block">admin@empresa.com</div>
+              <div class="d-none d-lg-block">
+                <div class="fw-semibold small" style="color: #1e3a5f;">Administrador</div>
+                <div class="text-muted" style="font-size: 0.7rem;">admin@empresa.com</div>
               </div>
             </div>
-            <ng-content select="[header-actions]"></ng-content>
           </div>
         </div>
       </div>
