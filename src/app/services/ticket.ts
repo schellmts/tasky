@@ -17,7 +17,21 @@ export interface Ticket {
   providedIn: 'root',
 })
 export class TicketService {
-  private tickets: Ticket[] = [
+  private readonly STORAGE_KEY = 'tasky_tickets';
+  
+  private tickets: Ticket[] = this.carregarDoLocalStorage();
+  
+  private carregarDoLocalStorage(): Ticket[] {
+    const dados = localStorage.getItem(this.STORAGE_KEY);
+    if (dados) {
+      try {
+        return JSON.parse(dados);
+      } catch (e) {
+        console.error('Erro ao carregar tickets do localStorage:', e);
+      }
+    }
+    // Se não houver dados salvos, retorna os dados padrão
+    return [
     {
       id: '1',
       titulo: 'Computador não liga após atualização',
@@ -547,7 +561,8 @@ export class TicketService {
       dataCriacao: '2025-11-26 15:00',
       dataAtualizacao: '2025-11-27 10:00'
     }
-  ];
+    ];
+  }
 
   getTickets(): Ticket[] {
     return [...this.tickets];
@@ -555,5 +570,46 @@ export class TicketService {
 
   getTicketById(id: string): Ticket | undefined {
     return this.tickets.find(t => t.id === id);
+  }
+
+  adicionarTicket(ticket: Omit<Ticket, 'id' | 'dataCriacao' | 'dataAtualizacao'>): Ticket {
+    const novoId = this.gerarNovoId();
+    const agora = new Date().toISOString().slice(0, 16).replace('T', ' ');
+    
+    const novoTicket: Ticket = {
+      ...ticket,
+      id: novoId,
+      dataCriacao: agora,
+      dataAtualizacao: agora
+    };
+    
+    this.tickets.push(novoTicket);
+    this.salvarNoLocalStorage();
+    return novoTicket;
+  }
+
+  atualizarTicket(ticket: Ticket): void {
+    const index = this.tickets.findIndex(t => t.id === ticket.id);
+    if (index !== -1) {
+      ticket.dataAtualizacao = new Date().toISOString().slice(0, 16).replace('T', ' ');
+      this.tickets[index] = ticket;
+      this.salvarNoLocalStorage();
+    }
+  }
+
+  private gerarNovoId(): string {
+    const maxId = this.tickets.reduce((max, t) => {
+      const numId = parseInt(t.id) || 0;
+      return numId > max ? numId : max;
+    }, 0);
+    return String(maxId + 1);
+  }
+
+  private salvarNoLocalStorage(): void {
+    try {
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.tickets));
+    } catch (e) {
+      console.error('Erro ao salvar tickets no localStorage:', e);
+    }
   }
 }

@@ -33,6 +33,13 @@
   border-radius: 4px;
 }
 
+.cdk-drop-list:empty,
+.cdk-drop-list:has(.text-muted:only-child) {
+  border: 2px dashed #dee2e6;
+  border-radius: 4px;
+  background-color: rgba(30, 58, 95, 0.02);
+}
+
 .card-placeholder {
   min-height: 120px;
   border: 2px dashed #ccc;
