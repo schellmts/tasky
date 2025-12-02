@@ -1,5 +1,27 @@
 import { Injectable } from '@angular/core';
 
+export interface Comentario {
+  id: string;
+  autor: string;
+  texto: string;
+  data: string;
+}
+
+export interface Anexo {
+  id: string;
+  nome: string;
+  tamanho: string;
+  data: string;
+}
+
+export interface HistoricoEvento {
+  id: string;
+  tipo: 'criacao' | 'atribuicao' | 'status' | 'prioridade' | 'comentario' | 'resolucao';
+  autor: string;
+  descricao: string;
+  data: string;
+}
+
 export interface Ticket {
   id: string;
   titulo: string;
@@ -11,6 +33,16 @@ export interface Ticket {
   dataCriacao: string;
   dataAtualizacao: string;
   dataResolucao?: string;
+  comentarios?: Comentario[];
+  atribuidoA?: string;
+  localizacao?: string;
+  equipamento?: string;
+  sla?: string;
+  emailSolicitante?: string;
+  telefoneSolicitante?: string;
+  emailTecnico?: string;
+  anexos?: Anexo[];
+  historico?: HistoricoEvento[];
 }
 
 @Injectable({
@@ -580,7 +612,13 @@ export class TicketService {
       ...ticket,
       id: novoId,
       dataCriacao: agora,
-      dataAtualizacao: agora
+      dataAtualizacao: agora,
+      comentarios: [{
+        id: '0',
+        autor: ticket.criadoPor,
+        texto: ticket.descricao,
+        data: agora
+      }]
     };
     
     this.tickets.push(novoTicket);
@@ -593,6 +631,34 @@ export class TicketService {
     if (index !== -1) {
       ticket.dataAtualizacao = new Date().toISOString().slice(0, 16).replace('T', ' ');
       this.tickets[index] = ticket;
+      this.salvarNoLocalStorage();
+    }
+  }
+
+  adicionarComentario(ticketId: string, comentario: Omit<Comentario, 'id' | 'data'>): void {
+    const ticket = this.getTicketById(ticketId);
+    if (ticket) {
+      if (!ticket.comentarios) {
+        ticket.comentarios = [];
+      }
+      
+      const novoComentario: Comentario = {
+        ...comentario,
+        id: String(Date.now()),
+        data: new Date().toISOString().slice(0, 16).replace('T', ' ')
+      };
+      
+      ticket.comentarios.push(novoComentario);
+      ticket.dataAtualizacao = new Date().toISOString().slice(0, 16).replace('T', ' ');
+      this.salvarNoLocalStorage();
+    }
+  }
+
+  removerComentario(ticketId: string, comentarioId: string): void {
+    const ticket = this.getTicketById(ticketId);
+    if (ticket && ticket.comentarios) {
+      ticket.comentarios = ticket.comentarios.filter(c => c.id !== comentarioId);
+      ticket.dataAtualizacao = new Date().toISOString().slice(0, 16).replace('T', ' ');
       this.salvarNoLocalStorage();
     }
   }

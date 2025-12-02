@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { TicketService, Ticket } from '../services/ticket';
 
 @Component({
@@ -12,6 +12,7 @@ import { TicketService, Ticket } from '../services/ticket';
 })
 export class TicketList implements OnInit {
   private ticketService = inject(TicketService);
+  private router = inject(Router);
 
   searchTerm: string = '';
   statusFiltro: string = 'Todos os Status';
@@ -95,5 +96,9 @@ export class TicketList implements OnInit {
       case 'Resolvido': return 'bg-success';
       default: return 'bg-secondary';
     }
+  }
+
+  verDetalhes(ticketId: string) {
+    this.router.navigate(['/tickets', ticketId]);
   }
 }
