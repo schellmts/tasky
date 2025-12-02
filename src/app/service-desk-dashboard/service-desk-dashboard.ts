@@ -6,10 +6,11 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { EChartsOption } from 'echarts';
 import Swal from 'sweetalert2';
 import { TicketService, Ticket } from '../services/ticket';
+import { Layout } from '../layout/layout';
 
 @Component({
   selector: 'app-service-desk-dashboard',
-  imports: [CommonModule, RouterModule, FormsModule, NgxEchartsModule],
+  imports: [CommonModule, RouterModule, FormsModule, NgxEchartsModule, Layout],
   templateUrl: './service-desk-dashboard.html',
   styleUrl: './service-desk-dashboard.css'
 })

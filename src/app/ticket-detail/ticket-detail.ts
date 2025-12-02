@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { TicketService, Ticket, Comentario, HistoricoEvento } from '../services/ticket';
+import { Layout } from '../layout/layout';
 import Swal from 'sweetalert2';
 
 interface ItemHistorico {
@@ -15,7 +16,7 @@ interface ItemHistorico {
 
 @Component({
   selector: 'app-ticket-detail',
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, Layout],
   templateUrl: './ticket-detail.html',
   styleUrl: './ticket-detail.css',
 })

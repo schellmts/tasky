@@ -1,68 +1,14 @@
-<div class="container-fluid p-0 vh-100">
-  <div class="row g-0 h-100">
-    <!-- Sidebar Esquerda -->
-    <div class="col-auto position-fixed start-0 top-0" style="background-color: #1e3a5f; height: 100vh; width: 80px; z-index: 1000;">
-      <div class="d-flex flex-column align-items-center py-4">
-        <div class="mb-5">
-          <div class="bg-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
-            <i class="bi bi-headphones" style="color: #1e3a5f; font-size: 24px;"></i>
-          </div>
-        </div>
-        <div class="mb-4">
-          <a routerLink="/" routerLinkActive="active" class="text-white text-decoration-none">
-            <i class="bi bi-grid-3x3-gap" style="font-size: 24px;"></i>
-          </a>
-        </div>
-        <div class="mb-4">
-          <a routerLink="/tickets" routerLinkActive="active" class="text-white text-decoration-none">
-            <i class="bi bi-stack" style="font-size: 24px;"></i>
-          </a>
-        </div>
-        <div class="mb-4">
-          <a routerLink="/kanban" routerLinkActive="active" class="text-white text-decoration-none">
-            <i class="bi bi-kanban" style="font-size: 24px;"></i>
-          </a>
-        </div>
-        <div class="mb-4">
-          <a routerLink="/inventory" routerLinkActive="active" class="text-white text-decoration-none">
-            <i class="bi bi-box-seam" style="font-size: 24px;"></i>
-          </a>
-        </div>
-      </div>
-    </div>
+<app-layout>
+  <button header-actions class="btn btn-primary btn-sm d-none d-md-inline" routerLink="/tickets/create">
+    <i class="bi bi-plus-circle me-1"></i>Novo Ticket
+  </button>
 
-    <!-- Conteúdo Principal -->
-    <div class="col d-flex flex-column" style="margin-left: 80px;">
-      <!-- Header -->
-      <div class="bg-white border-bottom px-4 py-3 position-sticky top-0" style="z-index: 999;">
-        <div class="d-flex justify-content-between align-items-center">
-          <div>
-            <h4 class="mb-0 fw-semibold">Tasky</h4>
-            <small class="text-muted">Sistema de Gestão Unificada</small>
-          </div>
-          <div class="d-flex align-items-center gap-3">
-            <div class="d-flex align-items-center gap-2">
-              <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white" style="width: 40px; height: 40px;">
-                <i class="bi bi-person"></i>
-              </div>
-              <div>
-                <div class="fw-medium small">Administrador</div>
-                <div class="text-muted small">admin@empresa.com</div>
-              </div>
-            </div>
-            <button class="btn btn-primary btn-sm" routerLink="/tickets/create">
-              <i class="bi bi-plus-circle me-1"></i>Novo Ticket
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Conteúdo do Dashboard -->
-      <div class="flex-grow-1 px-4 py-4" style="background-color: #f8f9fa; overflow-y: auto;">
+  <!-- Conteúdo -->
+  <div class="px-2 px-md-4 py-3 py-md-4" style="background-color: #f8f9fa;">
         <!-- Título -->
-        <div class="mb-4">
-          <h3 class="fw-semibold mb-1">Lista de Tickets</h3>
-          <p class="text-muted mb-0">Gerenciar e acompanhar tickets do service desk</p>
+        <div class="mb-3 mb-md-4">
+          <h3 class="fw-semibold mb-1" style="font-size: 1.5rem;">Lista de Tickets</h3>
+          <p class="text-muted mb-0 d-none d-sm-block">Gerenciar e acompanhar tickets do service desk</p>
         </div>
 
         <!-- Barra de Busca -->
@@ -82,8 +28,8 @@
         </div>
 
         <!-- Filtros -->
-        <div class="row g-3 mb-4">
-          <div class="col-md-6">
+        <div class="row g-2 g-md-3 mb-3 mb-md-4">
+          <div class="col-12 col-md-6">
             <label class="form-label small text-muted mb-1">Todos os Status</label>
             <select class="form-select form-select-sm" [(ngModel)]="statusFiltro" (change)="aplicarFiltros()">
               <option>Todos os Status</option>
@@ -93,7 +39,7 @@
               <option>Resolvido</option>
             </select>
           </div>
-          <div class="col-md-6">
+          <div class="col-12 col-md-6">
             <label class="form-label small text-muted mb-1">Todas Prioridades</label>
             <select class="form-select form-select-sm" [(ngModel)]="prioridadeFiltro" (change)="aplicarFiltros()">
               <option>Todas Prioridades</option>
@@ -105,36 +51,36 @@
         </div>
 
         <!-- Cards de Métricas -->
-        <div class="row g-3 mb-4">
-          <div class="col-md-3 d-flex">
+        <div class="row g-2 g-md-3 mb-3 mb-md-4">
+          <div class="col-6 col-md-3 d-flex">
             <div class="card border-0 shadow-sm h-100 w-100" style="cursor: pointer;" (click)="statusFiltro = 'Todos os Status'; aplicarFiltros()">
-              <div class="card-body p-4">
-                <h5 class="text-muted small mb-2">Total de Tickets</h5>
-                <h2 class="mb-0 fw-bold">{{ totalTickets }}</h2>
+              <div class="card-body p-3 p-md-4">
+                <h5 class="text-muted small mb-1 mb-md-2">Total de Tickets</h5>
+                <h2 class="mb-0 fw-bold" style="font-size: 1.75rem;">{{ totalTickets }}</h2>
               </div>
             </div>
           </div>
-          <div class="col-md-3 d-flex">
+          <div class="col-6 col-md-3 d-flex">
             <div class="card border-0 shadow-sm h-100 w-100" style="cursor: pointer;" (click)="filtrarPorStatus('Aberto')">
-              <div class="card-body p-4">
-                <h5 class="text-muted small mb-2">Abertos</h5>
-                <h2 class="mb-0 fw-bold text-primary">{{ ticketsAbertos }}</h2>
+              <div class="card-body p-3 p-md-4">
+                <h5 class="text-muted small mb-1 mb-md-2">Abertos</h5>
+                <h2 class="mb-0 fw-bold text-primary" style="font-size: 1.75rem;">{{ ticketsAbertos }}</h2>
               </div>
             </div>
           </div>
-          <div class="col-md-3 d-flex">
+          <div class="col-6 col-md-3 d-flex">
             <div class="card border-0 shadow-sm h-100 w-100" style="cursor: pointer;" (click)="filtrarPorStatus('Em Andamento')">
-              <div class="card-body p-4">
-                <h5 class="text-muted small mb-2">Em Andamento</h5>
-                <h2 class="mb-0 fw-bold text-primary">{{ ticketsEmAndamento }}</h2>
+              <div class="card-body p-3 p-md-4">
+                <h5 class="text-muted small mb-1 mb-md-2">Em Andamento</h5>
+                <h2 class="mb-0 fw-bold text-primary" style="font-size: 1.75rem;">{{ ticketsEmAndamento }}</h2>
               </div>
             </div>
           </div>
-          <div class="col-md-3 d-flex">
+          <div class="col-6 col-md-3 d-flex">
             <div class="card border-0 shadow-sm h-100 w-100" style="cursor: pointer;" (click)="filtrarPorPrioridade('Alta')">
-              <div class="card-body p-4">
-                <h5 class="text-muted small mb-2">Alta Prioridade</h5>
-                <h2 class="mb-0 fw-bold text-danger">{{ ticketsAltaPrioridade }}</h2>
+              <div class="card-body p-3 p-md-4">
+                <h5 class="text-muted small mb-1 mb-md-2">Alta Prioridade</h5>
+                <h2 class="mb-0 fw-bold text-danger" style="font-size: 1.75rem;">{{ ticketsAltaPrioridade }}</h2>
               </div>
             </div>
           </div>
@@ -148,23 +94,23 @@
         </div>
 
         <!-- Lista de Tickets -->
-        <div class="d-flex flex-column gap-3">
+        <div class="d-flex flex-column gap-2 gap-md-3">
           <div *ngFor="let ticket of ticketsFiltrados" class="card border-0 shadow-sm" style="cursor: pointer;" (click)="verDetalhes(ticket.id)">
-            <div class="card-body p-4">
+            <div class="card-body p-3 p-md-4">
               <div class="d-flex justify-content-between align-items-start">
                 <div class="flex-grow-1">
-                  <div class="d-flex align-items-center gap-2 mb-2">
-                    <span class="fw-semibold text-muted">{{ ticket.id }}</span>
-                    <span class="badge rounded-pill px-3 py-1" [ngClass]="getBadgeClassPrioridade(ticket.prioridade)">{{ ticket.prioridade }}</span>
-                    <span class="badge rounded-pill px-3 py-1" [ngClass]="getBadgeClassStatus(ticket.status)">{{ ticket.status }}</span>
-                    <span class="badge rounded-pill px-3 py-1 bg-secondary">{{ ticket.categoria }}</span>
+                  <div class="d-flex align-items-center gap-1 gap-md-2 mb-2 flex-wrap">
+                    <span class="fw-semibold text-muted small">{{ ticket.id }}</span>
+                    <span class="badge rounded-pill px-2 px-md-3 py-1 small" [ngClass]="getBadgeClassPrioridade(ticket.prioridade)">{{ ticket.prioridade }}</span>
+                    <span class="badge rounded-pill px-2 px-md-3 py-1 small" [ngClass]="getBadgeClassStatus(ticket.status)">{{ ticket.status }}</span>
+                    <span class="badge rounded-pill px-2 px-md-3 py-1 bg-secondary small d-none d-md-inline">{{ ticket.categoria }}</span>
                   </div>
-                  <h5 class="fw-semibold mb-2">{{ ticket.titulo }}</h5>
-                  <p class="text-muted mb-3">{{ ticket.descricao }}</p>
-                  <div class="d-flex flex-wrap gap-4 text-muted small">
+                  <h5 class="fw-semibold mb-2" style="font-size: 1.1rem;">{{ ticket.titulo }}</h5>
+                  <p class="text-muted mb-2 mb-md-3 small d-none d-md-block">{{ ticket.descricao }}</p>
+                  <div class="d-flex flex-wrap gap-2 gap-md-4 text-muted small">
                     <span><i class="bi bi-person me-1"></i>{{ ticket.criadoPor }}</span>
-                    <span><i class="bi bi-calendar me-1"></i>Criado: {{ ticket.dataCriacao }}</span>
-                    <span><i class="bi bi-clock me-1"></i>Atualizado: {{ ticket.dataAtualizacao }}</span>
+                    <span class="d-none d-md-inline"><i class="bi bi-calendar me-1"></i>Criado: {{ ticket.dataCriacao }}</span>
+                    <span class="d-none d-lg-inline"><i class="bi bi-clock me-1"></i>Atualizado: {{ ticket.dataAtualizacao }}</span>
                   </div>
                 </div>
                 <div>
@@ -189,12 +135,5 @@
           </div>
         </div>
 
-        <!-- Mensagem quando não há tickets -->
-        <div *ngIf="ticketsFiltrados.length === 0" class="text-center py-5">
-          <i class="bi bi-inbox fs-1 text-muted"></i>
-          <p class="text-muted mt-3">Nenhum ticket encontrado com os filtros aplicados.</p>
-        </div>
       </div>
-    </div>
-  </div>
-</div>
+</app-layout>

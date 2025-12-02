@@ -1,73 +1,19 @@
-<div class="container-fluid p-0 vh-100">
-  <div class="row g-0 h-100">
-    <!-- Sidebar Esquerda -->
-    <div class="col-auto position-fixed start-0 top-0" style="background-color: #1e3a5f; height: 100vh; width: 80px; z-index: 1000;">
-      <div class="d-flex flex-column align-items-center py-4">
-        <div class="mb-5">
-          <div class="bg-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
-            <i class="bi bi-headphones" style="color: #1e3a5f; font-size: 24px;"></i>
-          </div>
-        </div>
-        <div class="mb-4">
-          <a routerLink="/" routerLinkActive="active" class="text-white text-decoration-none">
-            <i class="bi bi-grid-3x3-gap" style="font-size: 24px;"></i>
-          </a>
-        </div>
-        <div class="mb-4">
-          <a routerLink="/tickets" routerLinkActive="active" class="text-white text-decoration-none">
-            <i class="bi bi-stack" style="font-size: 24px;"></i>
-          </a>
-        </div>
-        <div class="mb-4">
-          <a routerLink="/kanban" routerLinkActive="active" class="text-white text-decoration-none">
-            <i class="bi bi-kanban" style="font-size: 24px;"></i>
-          </a>
-        </div>
-        <div class="mb-4">
-          <a routerLink="/inventory" routerLinkActive="active" class="text-white text-decoration-none">
-            <i class="bi bi-box-seam" style="font-size: 24px;"></i>
-          </a>
-        </div>
-      </div>
-    </div>
+<app-layout>
+  <button header-actions class="btn btn-primary btn-sm d-none d-md-inline" routerLink="/tickets/create">
+    <i class="bi bi-plus-circle me-1"></i>Novo Ticket
+  </button>
 
-    <!-- Conteúdo Principal -->
-    <div class="col d-flex flex-column" style="margin-left: 80px;">
-      <!-- Header -->
-      <div class="bg-white border-bottom px-4 py-3 position-sticky top-0" style="z-index: 999;">
-        <div class="d-flex justify-content-between align-items-center">
-          <div>
-            <h4 class="mb-0 fw-semibold">Tasky</h4>
-            <small class="text-muted">Sistema de Gestão Unificada</small>
-          </div>
-          <div class="d-flex align-items-center gap-3">
-            <div class="d-flex align-items-center gap-2">
-              <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white" style="width: 40px; height: 40px;">
-                <i class="bi bi-person"></i>
-              </div>
-              <div>
-                <div class="fw-medium small">Administrador</div>
-                <div class="text-muted small">admin@empresa.com</div>
-              </div>
-            </div>
-            <button class="btn btn-primary btn-sm" routerLink="/tickets/create">
-              <i class="bi bi-plus-circle me-1"></i>Novo Ticket
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Conteúdo do Dashboard -->
-      <div class="flex-grow-1 px-4 py-4" style="background-color: #f8f9fa;">
+  <!-- Conteúdo do Dashboard -->
+  <div class="px-2 px-md-4 py-3 py-md-4" style="background-color: #f8f9fa;">
         <!-- Saudação -->
-        <div class="mb-4">
-          <h3 class="fw-semibold mb-1">Olá, Administrador!</h3>
-          <p class="text-muted mb-0">O que você está procurando hoje?</p>
+        <div class="mb-3 mb-md-4">
+          <h3 class="fw-semibold mb-1" style="font-size: 1.5rem;">Olá, Administrador!</h3>
+          <p class="text-muted mb-0 d-none d-sm-block">O que você está procurando hoje?</p>
         </div>
 
         <!-- Filtros -->
-        <div class="row g-3 mb-4">
-          <div class="col-md-3">
+        <div class="row g-2 g-md-3 mb-3 mb-md-4">
+          <div class="col-12 col-sm-6 col-md-3">
             <label class="form-label small text-muted mb-1">Tipo de Filtro</label>
             <select class="form-select form-select-sm" [(ngModel)]="tipoFiltroSelecionado">
               <option>Todos Tickets</option>
@@ -75,7 +21,7 @@
               <option>Resolvidos</option>
             </select>
           </div>
-          <div class="col-md-3">
+          <div class="col-12 col-sm-6 col-md-3">
             <label class="form-label small text-muted mb-1">Prioridade</label>
             <select class="form-select form-select-sm" [(ngModel)]="prioridadeFiltroSelecionado">
               <option>Todas</option>
@@ -84,7 +30,7 @@
               <option>Baixa</option>
             </select>
           </div>
-          <div class="col-md-3">
+          <div class="col-12 col-sm-6 col-md-3">
             <label class="form-label small text-muted mb-1">Modo de Data</label>
             <select class="form-select form-select-sm" [(ngModel)]="modoDataSelecionado">
               <option>Tempo Real</option>
@@ -92,7 +38,7 @@
               <option>Últimas 24h</option>
             </select>
           </div>
-          <div class="col-md-2">
+          <div class="col-12 col-sm-6 col-md-2">
             <label class="form-label small text-muted mb-1">Período</label>
             <select class="form-select form-select-sm" [(ngModel)]="periodoSelecionado">
               <option>Hoje</option>
@@ -100,26 +46,26 @@
               <option>Mês</option>
             </select>
           </div>
-          <div class="col-md-1 d-flex align-items-end">
-            <button class="btn btn-sm w-100 fw-medium text-white" style="background-color: #1e3a5f;" (click)="aplicarFiltro()">Aplicar Filtro</button>
+          <div class="col-12 col-md-1 d-flex align-items-end">
+            <button class="btn btn-sm w-100 fw-medium text-white" style="background-color: #1e3a5f;" (click)="aplicarFiltro()">Aplicar</button>
           </div>
         </div>
 
         <!-- Cards de Métricas -->
-        <div class="row g-3 mb-4">
+        <div class="row g-2 g-md-3 mb-3 mb-md-4">
           <!-- Tickets Abertos -->
-          <div class="col-md-3 d-flex">
+          <div class="col-6 col-md-3 d-flex">
             <div class="card border-0 shadow-sm h-100 w-100" style="background-color: #1e3a5f; cursor: pointer;" (click)="filtrarPorTipo('Abertos')">
-              <div class="card-body text-white p-4 d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-start mb-3">
+              <div class="card-body text-white p-3 p-md-4 d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2 mb-md-3">
                   <div>
-                    <h2 class="mb-0 fw-bold" style="font-size: 2.5rem;">{{ ticketsAbertos }}</h2>
-                    <small class="opacity-75">tickets</small>
+                    <h2 class="mb-0 fw-bold" style="font-size: 1.75rem;">{{ ticketsAbertos }}</h2>
+                    <small class="opacity-75 d-none d-md-block">tickets</small>
                   </div>
-                  <span class="badge rounded-pill px-3 py-1" style="background-color: rgba(255,255,255,0.2); color: white; font-size: 0.75rem;">Ativo</span>
+                  <span class="badge rounded-pill px-2 px-md-3 py-1 d-none d-md-block" style="background-color: rgba(255,255,255,0.2); color: white; font-size: 0.75rem;">Ativo</span>
                 </div>
-                <p class="mb-2 fw-medium">Tickets Abertos</p>
-                <small class="opacity-75 mt-auto">
+                <p class="mb-1 mb-md-2 fw-medium small">Tickets Abertos</p>
+                <small class="opacity-75 mt-auto d-none d-md-block">
                   <i class="bi bi-arrow-up text-success"></i> 5%
                 </small>
               </div>
@@ -127,18 +73,18 @@
           </div>
 
           <!-- Tarefas Concluídas -->
-          <div class="col-md-3 d-flex">
+          <div class="col-6 col-md-3 d-flex">
             <div class="card border-0 shadow-sm h-100 w-100" style="background-color: #1e3a5f; cursor: pointer;" (click)="filtrarPorTipo('Resolvidos')">
-              <div class="card-body text-white p-4 d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-start mb-3">
+              <div class="card-body text-white p-3 p-md-4 d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2 mb-md-3">
                   <div>
-                    <h2 class="mb-0 fw-bold" style="font-size: 2.5rem;">{{ tarefasConcluidas }}</h2>
-                    <small class="opacity-75">tarefas</small>
+                    <h2 class="mb-0 fw-bold" style="font-size: 1.75rem;">{{ tarefasConcluidas }}</h2>
+                    <small class="opacity-75 d-none d-md-block">tarefas</small>
                   </div>
-                  <span class="badge rounded-pill px-3 py-1" style="background-color: rgba(255,255,255,0.2); color: white; font-size: 0.75rem;">Bom</span>
+                  <span class="badge rounded-pill px-2 px-md-3 py-1 d-none d-md-block" style="background-color: rgba(255,255,255,0.2); color: white; font-size: 0.75rem;">Bom</span>
                 </div>
-                <p class="mb-2 fw-medium">Tarefas Concluídas</p>
-                <small class="opacity-75 mt-auto">
+                <p class="mb-1 mb-md-2 fw-medium small">Tarefas Concluídas</p>
+                <small class="opacity-75 mt-auto d-none d-md-block">
                   <i class="bi bi-arrow-up text-success"></i> 12%
                 </small>
               </div>
@@ -146,18 +92,18 @@
           </div>
 
           <!-- Tempo Médio Resolução -->
-          <div class="col-md-3 d-flex">
+          <div class="col-6 col-md-3 d-flex">
             <div class="card border-0 shadow-sm h-100 w-100" style="background-color: #1e3a5f;">
-              <div class="card-body text-white p-4 d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-start mb-3">
+              <div class="card-body text-white p-3 p-md-4 d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2 mb-md-3">
                   <div>
-                    <h2 class="mb-0 fw-bold" style="font-size: 2.5rem;">{{ tempoMedioResolucao }}</h2>
-                    <small class="opacity-75">horas</small>
+                    <h2 class="mb-0 fw-bold" style="font-size: 1.75rem;">{{ tempoMedioResolucao }}</h2>
+                    <small class="opacity-75 d-none d-md-block">horas</small>
                   </div>
-                  <span class="badge rounded-pill px-3 py-1" style="background-color: rgba(255,255,255,0.2); color: white; font-size: 0.75rem;">Ótimo</span>
+                  <span class="badge rounded-pill px-2 px-md-3 py-1 d-none d-md-block" style="background-color: rgba(255,255,255,0.2); color: white; font-size: 0.75rem;">Ótimo</span>
                 </div>
-                <p class="mb-2 fw-medium">Tempo Médio Resolução</p>
-                <small class="opacity-75 mt-auto">
+                <p class="mb-1 mb-md-2 fw-medium small">Tempo Médio Resolução</p>
+                <small class="opacity-75 mt-auto d-none d-md-block">
                   <i class="bi bi-arrow-up text-success"></i> 15%
                 </small>
               </div>
@@ -165,17 +111,17 @@
           </div>
 
           <!-- SLA Cumprido -->
-          <div class="col-md-3 d-flex">
+          <div class="col-6 col-md-3 d-flex">
             <div class="card border-0 shadow-sm h-100 w-100" style="background-color: #1e3a5f;">
-              <div class="card-body text-white p-4 d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-start mb-3">
+              <div class="card-body text-white p-3 p-md-4 d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2 mb-md-3">
                   <div>
-                    <h2 class="mb-0 fw-bold" style="font-size: 2.5rem;">{{ slaCumprido }}%</h2>
+                    <h2 class="mb-0 fw-bold" style="font-size: 1.75rem;">{{ slaCumprido }}%</h2>
                   </div>
-                  <span class="badge rounded-pill px-3 py-1" style="background-color: rgba(255,255,255,0.2); color: white; font-size: 0.75rem;">Excelente</span>
+                  <span class="badge rounded-pill px-2 px-md-3 py-1 d-none d-md-block" style="background-color: rgba(255,255,255,0.2); color: white; font-size: 0.75rem;">Excelente</span>
                 </div>
-                <p class="mb-2 fw-medium">SLA Cumprido</p>
-                <small class="opacity-75 mt-auto">
+                <p class="mb-1 mb-md-2 fw-medium small">SLA Cumprido</p>
+                <small class="opacity-75 mt-auto d-none d-md-block">
                   <i class="bi bi-arrow-up text-success"></i> 3%
                 </small>
               </div>
@@ -184,18 +130,18 @@
         </div>
 
         <!-- Gráficos -->
-        <div class="row g-3">
+        <div class="row g-2 g-md-3">
           <!-- Distribuição por Categoria -->
-          <div class="col-md-6 d-flex">
+          <div class="col-12 col-md-6 d-flex">
             <div class="card border-0 shadow-sm w-100 d-flex flex-column">
               <div class="card-body p-4 d-flex flex-column flex-grow-1">
                 <h5 class="card-title fw-semibold mb-1">Distribuição por Categoria</h5>
                 <p class="text-muted small mb-4">Distribuição de tickets por categoria no período</p>
-                <div class="d-flex justify-content-center align-items-center mb-4" style="height: 350px;">
-                  <div *ngIf="temDadosParaGrafico" echarts [options]="chartDistribuicao" style="width: 100%; height: 350px;"></div>
-                  <div *ngIf="!temDadosParaGrafico" class="text-center text-muted d-flex flex-column justify-content-center align-items-center" style="height: 350px;">
+                <div class="d-flex justify-content-center align-items-center mb-4" style="height: 300px; min-height: 250px;">
+                  <div *ngIf="temDadosParaGrafico" echarts [options]="chartDistribuicao" style="width: 100%; height: 100%; min-height: 250px;"></div>
+                  <div *ngIf="!temDadosParaGrafico" class="text-center text-muted d-flex flex-column justify-content-center align-items-center" style="height: 100%; min-height: 250px;">
                     <i class="bi bi-inbox fs-1 d-block mb-3"></i>
-                    <p class="mb-0">Nenhum registro encontrado com os filtros aplicados.</p>
+                    <p class="mb-0 small">Nenhum registro encontrado com os filtros aplicados.</p>
                   </div>
                 </div>
                 <div>
@@ -213,7 +159,7 @@
           </div>
 
           <!-- Atividades da Semana -->
-          <div class="col-md-6 d-flex">
+          <div class="col-12 col-md-6 d-flex">
             <div class="card border-0 shadow-sm w-100 d-flex flex-column">
               <div class="card-body p-4 d-flex flex-column flex-grow-1">
                 <h5 class="card-title fw-semibold mb-1">Atividades da Semana</h5>
@@ -236,11 +182,11 @@
                 </div>
 
                 <!-- Gráfico de linha -->
-                <div style="height: 350px;">
-                  <div *ngIf="temDadosParaGrafico" echarts [options]="chartAtividades" style="width: 100%; height: 350px;"></div>
-                  <div *ngIf="!temDadosParaGrafico" class="text-center text-muted d-flex flex-column justify-content-center align-items-center" style="height: 350px;">
+                <div style="height: 300px; min-height: 250px;">
+                  <div *ngIf="temDadosParaGrafico" echarts [options]="chartAtividades" style="width: 100%; height: 100%; min-height: 250px;"></div>
+                  <div *ngIf="!temDadosParaGrafico" class="text-center text-muted d-flex flex-column justify-content-center align-items-center" style="height: 100%; min-height: 250px;">
                     <i class="bi bi-inbox fs-1 d-block mb-3"></i>
-                    <p class="mb-0">Nenhum registro encontrado com os filtros aplicados.</p>
+                    <p class="mb-0 small">Nenhum registro encontrado com os filtros aplicados.</p>
                   </div>
                 </div>
 
@@ -252,6 +198,4 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+</app-layout>

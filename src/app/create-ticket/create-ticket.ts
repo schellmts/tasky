@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { TicketService } from '../services/ticket';
+import { Layout } from '../layout/layout';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-ticket',
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, Layout],
   templateUrl: './create-ticket.html',
   styleUrl: './create-ticket.css',
 })

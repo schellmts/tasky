@@ -4,10 +4,11 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { DragDropModule, CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TicketService, Ticket } from '../services/ticket';
+import { Layout } from '../layout/layout';
 
 @Component({
   selector: 'app-kanban-board',
-  imports: [CommonModule, RouterModule, FormsModule, DragDropModule],
+  imports: [CommonModule, RouterModule, FormsModule, DragDropModule, Layout],
   templateUrl: './kanban-board.html',
   styleUrl: './kanban-board.css',
 })

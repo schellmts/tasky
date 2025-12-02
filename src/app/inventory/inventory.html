@@ -4,11 +4,11 @@
   </button>
 
   <!-- Conteúdo -->
-  <div class="px-4 py-4" style="background-color: #f8f9fa;">
+  <div class="px-2 px-md-4 py-3 py-md-4" style="background-color: #f8f9fa;">
     <!-- Título -->
-    <div class="mb-4">
-      <h3 class="fw-semibold mb-1">Gestão de Inventário</h3>
-      <p class="text-muted mb-0">Controle e gerencie todos os ativos de TI da empresa</p>
+    <div class="mb-3 mb-md-4">
+      <h3 class="fw-semibold mb-1" style="font-size: 1.5rem;">Gestão de Inventário</h3>
+      <p class="text-muted mb-0 d-none d-sm-block">Controle e gerencie todos os ativos de TI da empresa</p>
     </div>
 
     <!-- Barra de Busca -->
@@ -27,8 +27,8 @@
     </div>
 
     <!-- Filtros -->
-    <div class="row g-3 mb-4">
-      <div class="col-md-6">
+    <div class="row g-2 g-md-3 mb-3 mb-md-4">
+      <div class="col-12 col-md-6">
         <label class="form-label small text-muted mb-1">Todos os Tipos</label>
         <select class="form-select form-select-sm" [(ngModel)]="tipoFiltro">
           <option>Todos os Tipos</option>
@@ -40,7 +40,7 @@
           <option>Outros</option>
         </select>
       </div>
-      <div class="col-md-6">
+      <div class="col-12 col-md-6">
         <label class="form-label small text-muted mb-1">Todos os Status</label>
         <select class="form-select form-select-sm" [(ngModel)]="statusFiltro">
           <option>Todos os Status</option>
@@ -53,36 +53,36 @@
     </div>
 
     <!-- Cards de Métricas -->
-    <div class="row g-3 mb-4">
-      <div class="col-md-3 d-flex">
+    <div class="row g-2 g-md-3 mb-3 mb-md-4">
+      <div class="col-6 col-md-3 d-flex">
         <div class="card border-0 shadow-sm h-100 w-100" style="cursor: pointer;" (click)="tipoFiltro = 'Todos os Tipos'; statusFiltro = 'Todos os Status'">
-          <div class="card-body p-4">
-            <h5 class="text-muted small mb-2">Total de Itens</h5>
-            <h2 class="mb-0 fw-bold">{{ totalItens }}</h2>
+          <div class="card-body p-3 p-md-4">
+            <h5 class="text-muted small mb-1 mb-md-2">Total de Itens</h5>
+            <h2 class="mb-0 fw-bold" style="font-size: 1.75rem;">{{ totalItens }}</h2>
           </div>
         </div>
       </div>
-      <div class="col-md-3 d-flex">
+      <div class="col-6 col-md-3 d-flex">
         <div class="card border-0 shadow-sm h-100 w-100" style="cursor: pointer; background-color: #d4edda;" (click)="filtrarPorStatus('Disponível')">
-          <div class="card-body p-4">
-            <h5 class="text-muted small mb-2">Disponível</h5>
-            <h2 class="mb-0 fw-bold">{{ disponivel }}</h2>
+          <div class="card-body p-3 p-md-4">
+            <h5 class="text-muted small mb-1 mb-md-2">Disponível</h5>
+            <h2 class="mb-0 fw-bold" style="font-size: 1.75rem;">{{ disponivel }}</h2>
           </div>
         </div>
       </div>
-      <div class="col-md-3 d-flex">
+      <div class="col-6 col-md-3 d-flex">
         <div class="card border-0 shadow-sm h-100 w-100" style="cursor: pointer; background-color: #d1ecf1;" (click)="filtrarPorStatus('Em Uso')">
-          <div class="card-body p-4">
-            <h5 class="text-muted small mb-2">Em Uso</h5>
-            <h2 class="mb-0 fw-bold">{{ emUso }}</h2>
+          <div class="card-body p-3 p-md-4">
+            <h5 class="text-muted small mb-1 mb-md-2">Em Uso</h5>
+            <h2 class="mb-0 fw-bold" style="font-size: 1.75rem;">{{ emUso }}</h2>
           </div>
         </div>
       </div>
-      <div class="col-md-3 d-flex">
+      <div class="col-6 col-md-3 d-flex">
         <div class="card border-0 shadow-sm h-100 w-100" style="cursor: pointer; background-color: #fff3cd;" (click)="filtrarPorStatus('Manutenção')">
-          <div class="card-body p-4">
-            <h5 class="text-muted small mb-2">Manutenção</h5>
-            <h2 class="mb-0 fw-bold">{{ manutencao }}</h2>
+          <div class="card-body p-3 p-md-4">
+            <h5 class="text-muted small mb-1 mb-md-2">Manutenção</h5>
+            <h2 class="mb-0 fw-bold" style="font-size: 1.75rem;">{{ manutencao }}</h2>
           </div>
         </div>
       </div>

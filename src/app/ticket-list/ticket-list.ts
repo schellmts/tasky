@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { TicketService, Ticket } from '../services/ticket';
+import { Layout } from '../layout/layout';
 
 @Component({
   selector: 'app-ticket-list',
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, Layout],
   templateUrl: './ticket-list.html',
   styleUrl: './ticket-list.css',
 })

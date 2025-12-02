@@ -9,4 +9,13 @@ import { RouterModule } from '@angular/router';
   styleUrl: './layout.css',
 })
 export class Layout {
+  sidebarOpen = false;
+
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
+
+  closeSidebar() {
+    this.sidebarOpen = false;
+  }
 }
