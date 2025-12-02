@@ -1,17 +1,17 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { NGX_ECHARTS_CONFIG, NgxEchartsModule } from 'ngx-echarts';
-import * as echarts from 'echarts';
-
-import { routes } from './app.routes';
-
+import {
+  ApplicationConfig,
+  provideZoneChangeDetection,
+} from '@angular/core';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
+import { APP_BASE_HREF } from '@angular/common';
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideRouter(routes),
-    {
-      provide: NGX_ECHARTS_CONFIG,
-      useValue: { echarts }
-    }
-  ]
+    { provide: APP_BASE_HREF, useValue: '/portal/2/NOMESISTEMA' },
+    provideHttpClient(),
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideHttpClient(withInterceptorsFromDi()),
+  ],
 };
